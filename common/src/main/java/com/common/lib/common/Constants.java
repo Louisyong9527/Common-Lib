@@ -41,4 +41,13 @@ public class Constants {
     public static final String IsArraveBeforeSix = "IsArraveBeforeSix";
     public static final String IsPayInvoice = "IsPayInvoice";
 
+    /*
+    指纹支付相关
+    */
+    public static final String GESTURE_OPTION = "gesture_option";
+    public static final String GESTURE_PWD = "gesture_pwd";
+    public static final int GESTURE_OPTION_MODIFY = 1;
+    public static final int GESTURE_OPTION_SET = 2;
+    public static final String FingerSettingStatus="FingerSetting";
+
 }
