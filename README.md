@@ -10,5 +10,5 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.Louisyong9527:Common-Lib:1.1.1'
+	        implementation 'com.github.Louisyong9527:Common-Lib:1.1.2'
 	}
