@@ -49,10 +49,10 @@ public class CallPhoneUtils {
         }
     }
 
-    public static void callPhone(Context mContext ) {
+    public static void callPhone(Context mContext,String number ) {
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_DIAL);
-        intent.setData(Uri.parse("tel:" + "10086"));
+        intent.setData(Uri.parse("tel:" + number));
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         mContext.startActivity(intent);
     }
