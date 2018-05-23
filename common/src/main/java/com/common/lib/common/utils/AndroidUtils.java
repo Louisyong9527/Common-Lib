@@ -43,6 +43,7 @@ import android.widget.Toast;
 import com.common.lib.common.AppManager;
 import com.common.lib.common.R;
 import com.common.lib.common.bean.ContactBen;
+import com.common.lib.common.view.MyToast;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -721,10 +722,10 @@ public class AndroidUtils {
     /**
      * 避免频繁弹出toast
      */
-    private static Toast toast;
-    public static void showToast(Context context, String content) {
+    private static MyToast toast;
+    public static void showToast(Context context, Activity activity,String content) {
         if (toast == null) {
-            toast = Toast.makeText(context,content,  Toast.LENGTH_SHORT);
+            toast = MyToast.makeText(context,activity,content, Toast.LENGTH_SHORT);
         } else {
             toast.setText(content);
         }
@@ -789,9 +790,9 @@ public class AndroidUtils {
     static Context contxt;
 
 
-    public static void showToastLong(Context context,  String content) {
+    public static void showToastLong(Context context,Activity activity  ,String content) {
         if (toast == null) {
-            toast = Toast.makeText(context,content,  Toast.LENGTH_LONG);
+            toast = MyToast.makeText(context,activity,content, Toast.LENGTH_LONG);
         } else {
             toast.setText(content);
         }
