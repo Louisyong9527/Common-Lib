@@ -6,7 +6,7 @@ package com.common.lib.common;
  * @des 常量配置类
  */
 
-public class Constants {
+public class MyConstants {
 
     public static final int PageSize = 20;
 
