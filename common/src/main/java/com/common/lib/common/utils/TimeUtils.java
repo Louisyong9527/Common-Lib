@@ -1,5 +1,7 @@
 package com.common.lib.common.utils;
 
+import android.text.TextUtils;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,7 +21,7 @@ public class TimeUtils {
      */
     public static String getDateTimeSecondFromMillisecond(Long millisecond){
 
-        if (millisecond==null){
+        if (millisecond==null||millisecond==0){
             return "";
         }
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -29,8 +31,7 @@ public class TimeUtils {
     }
     public static String getDateTimeSecondFromMillisecond(String mString){
 
-
-        if (mString==null){
+        if (TextUtils.isEmpty(mString)){
             return "";
         }
         Long millisecond= Long.parseLong(mString);
@@ -50,7 +51,7 @@ public class TimeUtils {
      */
     public static String getDateTimeMinFromMillisecond(Long millisecond){
 
-        if (millisecond==null){
+        if (millisecond==null||millisecond==0){
             return "";
         }
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -61,7 +62,7 @@ public class TimeUtils {
     public static String getDateTimeMinFromMillisecond(String mString){
 
 
-        if (mString==null){
+        if (TextUtils.isEmpty(mString)){
             return "";
         }
         Long millisecond= Long.parseLong(mString);
@@ -91,7 +92,7 @@ public class TimeUtils {
     }
     public static String getDateDayFromMillisecond(String millisecond){
 
-        if (millisecond==null||millisecond.equals("0")){
+        if (TextUtils.isEmpty(millisecond)||millisecond.equals("0")){
             return "";
         }
 
@@ -102,6 +103,31 @@ public class TimeUtils {
         String dateStr = simpleDateFormat.format(date);
         return dateStr;
     }
+
+    public static String getDateMothFromMillisecond(Long millisecond){
+
+        if (millisecond==null||millisecond==0){
+            return "";
+        }
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM");
+        Date date = new Date(millisecond);
+        String dateStr = simpleDateFormat.format(date);
+        return dateStr;
+    }
+    public static String getDateMothFromMillisecond(String millisecond){
+
+        if (TextUtils.isEmpty(millisecond)||millisecond.equals("0")){
+            return "";
+        }
+
+        long parseLong = Long.parseLong(millisecond);
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM");
+        Date date = new Date(parseLong);
+        String dateStr = simpleDateFormat.format(date);
+        return dateStr;
+    }
+
     /**
      * 将毫秒转化成固定格式的时间
      * 时间格式: yyyy-MM-dd HH:mm:ss
@@ -123,7 +149,7 @@ public class TimeUtils {
     }
     public static String getChinaDayFromMillisecond(String millisecond){
 
-        if (millisecond==null||millisecond.equals("0")){
+        if (TextUtils.isEmpty(millisecond)||millisecond.equals("0")){
             return "";
         }
         long parseLong = Long.parseLong(millisecond);
