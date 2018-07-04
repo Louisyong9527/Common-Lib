@@ -24,7 +24,7 @@ public class MyToast {
     public MyToast(Context context, Activity activity) {
         mContext = context;
         toast = new Toast(mContext);
-        toast.setGravity(Gravity.BOTTOM, 0, 260);// 位置会比原来的Toast偏上一些
+        toast.setGravity(Gravity.CENTER, 0, 0);// 位置居中
         View toastRoot = activity.getLayoutInflater().inflate(R.layout.toast_view, null);
         toastTextField = (TextView) toastRoot.findViewById(R.id.toast_text);
         toast.setView(toastRoot);
