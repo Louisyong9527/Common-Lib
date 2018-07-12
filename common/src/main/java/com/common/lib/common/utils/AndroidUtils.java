@@ -621,7 +621,8 @@ public class AndroidUtils {
      * @param isFinish 是否关闭当前activity
      */
     public static void startNextActivity(Activity activity, Class<?> cls, Bundle bundle, boolean isFinish) {
-
+        if (null != activity)
+            AppManager.getAppManager().addActivity(activity);
         Intent intent = new Intent(activity, cls);
         if (bundle != null)
             intent.putExtras(bundle);
@@ -641,6 +642,8 @@ public class AndroidUtils {
      * @param requestCode Activity请求码
      */
     public static void startNextActivityForResult(Activity activity, Class<?> cls, Bundle bundle, int requestCode) {
+        if (null != activity)
+            AppManager.getAppManager().addActivity(activity);
         Intent intent = new Intent(activity, cls);
         if (bundle != null)
             intent.putExtras(bundle);
