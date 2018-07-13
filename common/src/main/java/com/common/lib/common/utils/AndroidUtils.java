@@ -41,6 +41,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.common.lib.common.AppManager;
+import com.common.lib.common.BaseApplication;
 import com.common.lib.common.R;
 import com.common.lib.common.bean.ContactBen;
 import com.common.lib.common.view.MyToast;
@@ -622,7 +623,7 @@ public class AndroidUtils {
      */
     public static void startNextActivity(Activity activity, Class<?> cls, Bundle bundle, boolean isFinish) {
         if (null != activity)
-            AppManager.getAppManager().addActivity(activity);
+            BaseApplication.mAppManager.addActivity(activity);
         Intent intent = new Intent(activity, cls);
         if (bundle != null)
             intent.putExtras(bundle);
@@ -643,7 +644,7 @@ public class AndroidUtils {
      */
     public static void startNextActivityForResult(Activity activity, Class<?> cls, Bundle bundle, int requestCode) {
         if (null != activity)
-            AppManager.getAppManager().addActivity(activity);
+            BaseApplication.mAppManager.addActivity(activity);
         Intent intent = new Intent(activity, cls);
         if (bundle != null)
             intent.putExtras(bundle);
