@@ -54,11 +54,6 @@ public class AppManager {
      */
     public void addActivity(Activity activity) {
         activityStack.push(activity);
-        String name="";
-        for (int i = 0; i <activityStack.size() ; i++) {
-           name=name+" "+activityStack.get(i).getLocalClassName();
-        }
-        Log.e("activity==",name);
     }
 
     /**
@@ -84,7 +79,7 @@ public class AppManager {
         if (activity != null && activityStack.contains(activity)) {
             activityStack.remove(activity);
             if (!activity.isFinishing())
-            activity.finish();
+                activity.finish();
         }
     }
 
@@ -129,12 +124,13 @@ public class AppManager {
     public void finishAllActivity(Class<?> cls, Class<?> mainClass) {
 
         for (Activity activity : activityStack) {
-            if (null != activity&& !activity.getClass().equals(mainClass)) {
-                if (null != cls && !activity.getClass().equals(cls))
-                    finishActivity(activity);
+            if (null != activity && !activity.getClass().equals(mainClass) && null != cls && !activity.getClass().equals(cls)) {
+                activityStack.remove(activity);
+                if (!activity.isFinishing()) {
+                    activity.finish();
+                }
             }
         }
-
         activityStack.clear();
     }
 
