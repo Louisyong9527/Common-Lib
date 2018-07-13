@@ -3,6 +3,7 @@ package com.common.lib.common;
 import android.app.Activity;
 import android.util.Log;
 
+import java.util.Iterator;
 import java.util.Stack;
 
 /**
@@ -123,14 +124,20 @@ public class AppManager {
      */
     public void finishAllActivity(Class<?> cls, Class<?> mainClass) {
 
-        for (Activity activity : activityStack) {
-            if (null != activity && !activity.getClass().equals(mainClass) && null != cls && !activity.getClass().equals(cls)) {
-                activityStack.remove(activity);
-                if (!activity.isFinishing()) {
+        Iterator iterator = activityStack.iterator();
+
+        while(iterator.hasNext()) {
+            Activity activity = (Activity)iterator.next();
+            if(null != activity && !activity.getClass().equals(mainClass) && null != cls && !activity.getClass().equals(cls)) {
+                iterator.remove();
+                if(!activity.isFinishing()) {
                     activity.finish();
                 }
             }
         }
+
+
+
         activityStack.clear();
     }
 
