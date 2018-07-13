@@ -120,6 +120,24 @@ public class AppManager {
         }
         activityStack.clear();
     }
+
+    /**
+     * 结束除tagActivity及MainActivity之外的所有Activity
+     *
+     * @param cls
+     */
+    public void finishAllActivity(Class<?> cls, Class<?> mainClass) {
+
+        for (Activity activity : activityStack) {
+            if (null != activity&& !activity.getClass().equals(mainClass)) {
+                if (null != cls && !activity.getClass().equals(cls))
+                    finishActivity(activity);
+            }
+        }
+
+        activityStack.clear();
+    }
+
     /**
      * 退出应用程序
      */
