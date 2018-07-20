@@ -649,7 +649,7 @@ public class AndroidUtils {
         activity.startActivity(intent);
         if (isFinish)
             activity.finish();
-        activity.overridePendingTransition(android.R.anim.fade_out, R.anim.lib_c_next_h_show);
+        activity.overridePendingTransition(R.anim.lib_c_last_h_show, R.anim.lib_c_last_h_alpha);
     }
 
 
