@@ -634,6 +634,25 @@ public class AndroidUtils {
         // activity.overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
     }
 
+    /***
+     * @param activity 当前activity
+     * @param cls      跳转的activity
+     * @param bundle   传值
+     * @param isFinish 是否关闭当前activity
+     */
+    public static void startToLastActivity(Activity activity, Class<?> cls, Bundle bundle, boolean isFinish) {
+        if (null != activity)
+            BaseApplication.mAppManager.addActivity(activity);
+        Intent intent = new Intent(activity, cls);
+        if (bundle != null)
+            intent.putExtras(bundle);
+        activity.startActivity(intent);
+        if (isFinish)
+            activity.finish();
+        activity.overridePendingTransition(android.R.anim.fade_out, R.anim.lib_c_next_h_show);
+    }
+
+
     /**
      * 带返回请求进行Activity跳转
      *
