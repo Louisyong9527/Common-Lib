@@ -1,7 +1,9 @@
 package com.common.lib.common.utils;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -9,7 +11,12 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.support.v4.content.FileProvider;
+import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
+import android.widget.Toast;
+
+import com.tbruyelle.rxpermissions2.Permission;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -17,6 +24,8 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import io.reactivex.functions.Consumer;
 
 /**
  * Created by FPM0300 on 2018/3/23.
@@ -28,13 +37,13 @@ public class UpdateUtils {
     /**
      * 安装apk
      */
-    public static void installApk(File file, Activity mActivity) {
+    public static void installApk(File file,String provider, Activity mActivity) {
 
         Intent intent = new Intent(Intent.ACTION_VIEW);
         //判断是否是AndroidN以及更高的版本
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            Uri contentUri = FileProvider.getUriForFile(mActivity, "com.fosconn.fileprovider" , file);
+            Uri contentUri = FileProvider.getUriForFile(mActivity, provider , file);
             intent.setDataAndType(contentUri, "application/vnd.android.package-archive");
         } else {
             intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
@@ -145,5 +154,53 @@ public class UpdateUtils {
             return diff > 0;
         }
     }
+
+
+    private void showPermission(final String downloadUrl, final String provider,final ProgressDialog pd, final Activity mActivity) {
+
+        RxPermissions rxPermissions = new RxPermissions(mActivity);
+        rxPermissions.requestEach(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .subscribe(new Consumer<Permission>() {
+                    @Override
+                    public void accept(Permission permission) throws Exception {
+                        if (permission.granted) {
+                            //启动子线程下载任务
+                            new Thread(){
+                                @Override
+                                public void run() {
+                                    try {
+                                        File file = UpdateUtils.getFileFromServer(downloadUrl, pd);
+                                        sleep(1000);
+                                        pd.dismiss(); //结束掉进度条对话框
+                                        if (null!=file&&file.exists()) {
+                                            installApk(file,provider, mActivity);
+                                        }
+                                    } catch (Exception e) {
+                                        //下载apk失败
+                                        Toast.makeText(mActivity, "下载新版本失败", Toast.LENGTH_LONG).show();
+                                        e.printStackTrace();
+                                    }
+                                }}.start();
+
+                        } else if (permission.shouldShowRequestPermissionRationale) {
+                            // 用户拒绝了该权限，没有选中『不再询问』（Never ask again）,那么下次再次启动时，还会提示请求权限的对话框
+                            //toast("用户拒绝了该权限");
+                        } else {
+                            // 用户拒绝了该权限，并且选中『不再询问』，提醒用户手动打开权限
+                            final AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
+                            builder.setMessage("权限被拒绝，请在设置里面开启相应权限，若无相应权限会影响使用")
+                                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            dialogInterface.dismiss();
+                                        }
+                                    })
+                                    .setNegativeButton("", null)
+                                    .create();
+                        }
+                    }
+                });
+    }
+
 
 }
