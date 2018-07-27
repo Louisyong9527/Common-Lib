@@ -156,7 +156,7 @@ public class UpdateUtils {
     }
 
 
-    private void showPermission(final String downloadUrl, final String provider,final ProgressDialog pd, final Activity mActivity) {
+    public static void showPermission(final String downloadUrl, final String provider,final ProgressDialog pd, final Activity mActivity) {
 
         RxPermissions rxPermissions = new RxPermissions(mActivity);
         rxPermissions.requestEach(Manifest.permission.WRITE_EXTERNAL_STORAGE)
