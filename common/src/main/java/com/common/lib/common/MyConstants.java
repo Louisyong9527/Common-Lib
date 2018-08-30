@@ -29,6 +29,25 @@ public class MyConstants {
     public static final String USER_INFO_JSON = "USER_INFO_JSON";
     public static final String FIRSTTIME_SHOW_TIPS = "FIRSTTIME_SHOW_TIPS";
 
+    //base url
+    public static final String API_URL = "API_URL";
+
+    //取消更新时间key
+    public static final String CANCLE_UPDATE_TIME="CANCLE_UPDATE_TIME";
+    //本地存储 version  key
+    public static final String LOCAL_VERSION="LOCAL_VERSION";
+
+    //本地存储 --上次更新服务器版本
+    public static final String REMOTE_VERSION="REMOTE_VERSION";
+
+    //本地存储 --注册邮箱
+    public static final String REGISTER_EMAIL="REGISTER_EMAIL";
+
+    //请求成功的code
+    public static final String RESPONSE_SUCCESS_CODE = "100000001";
+
+    //重置密码TAG
+    public static final String RESETPASSWORD="RESETPASSWORD";
     /*
     指纹相关
     */
