@@ -630,8 +630,8 @@ public class AndroidUtils {
         activity.startActivity(intent);
         if (isFinish)
             activity.finish();
-        activity.overridePendingTransition(R.anim.lib_c_next_h_show, android.R.anim.fade_out);
-        // activity.overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+        //activity.overridePendingTransition(R.anim.lib_c_next_h_show, android.R.anim.fade_out);
+         activity.overridePendingTransition(R.anim.lib_c_next_h_show,R.anim.lib_c_last_h_alpha);
     }
 
     /***
