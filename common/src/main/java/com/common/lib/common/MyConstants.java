@@ -57,4 +57,7 @@ public class MyConstants {
     public static final int GESTURE_OPTION_SET = 2;
     public static final String FINGER_SETTING_STATUS="FINGER_SETTING_STATUS";
 
+    //登录用户角色属性
+    public static final String ROLENAME="ROLENAME";
+
 }
