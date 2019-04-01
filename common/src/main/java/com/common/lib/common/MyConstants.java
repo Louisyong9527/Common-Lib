@@ -28,6 +28,7 @@ public class MyConstants {
     public static final String LOGIN_MOBILE = "LOGIN_MOBILE";
     public static final String USER_INFO_JSON = "USER_INFO_JSON";
     public static final String FIRSTTIME_SHOW_TIPS = "FIRSTTIME_SHOW_TIPS";
+    public static final String LOGIN_NATURALID = "LOGIN_NATURALID";
 
     //base url
     public static final String API_URL = "API_URL";
