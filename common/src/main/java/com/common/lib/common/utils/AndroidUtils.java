@@ -45,6 +45,7 @@ import com.common.lib.common.BaseApplication;
 import com.common.lib.common.R;
 import com.common.lib.common.bean.ContactBen;
 import com.common.lib.common.view.MyToast;
+import com.mic.etoast2.EToastUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -745,14 +746,9 @@ public class AndroidUtils {
     /**
      * 避免频繁弹出toast
      */
-    private static MyToast toast;
     public static void showToast(Context context, Activity activity,String content) {
-        if (toast == null) {
-            toast = MyToast.makeText(context,activity,content, Toast.LENGTH_SHORT);
-        } else {
-            toast.setText(content);
-        }
-        toast.show();
+
+        EToastUtils.showWithBg(content);
     }
     public static ContactBen getContactPhone(Cursor cursor, Context context) {
         ContactBen vo = new ContactBen();
@@ -812,15 +808,6 @@ public class AndroidUtils {
     }
     static Context contxt;
 
-
-    public static void showToastLong(Context context,Activity activity  ,String content) {
-        if (toast == null) {
-            toast = MyToast.makeText(context,activity,content, Toast.LENGTH_LONG);
-        } else {
-            toast.setText(content);
-        }
-        toast.show();
-    }
     /**
      * 字节数组转换为十六进制字符串
      *
