@@ -1,6 +1,5 @@
 package com.common.lib.common;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.Build;
