@@ -44,9 +44,6 @@ import com.common.lib.common.AppManager;
 import com.common.lib.common.BaseApplication;
 import com.common.lib.common.R;
 import com.common.lib.common.bean.ContactBen;
-import com.common.lib.common.view.MyToast;
-import com.mic.etoast2.EToastUtils;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -63,6 +60,7 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import com.common.lib.common.etoast2.EToastUtils;
 
 /**
  * @version V1.0

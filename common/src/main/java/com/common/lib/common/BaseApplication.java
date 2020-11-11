@@ -3,12 +3,16 @@ package com.common.lib.common;
 import android.app.Application;
 import android.content.Context;
 
+import androidx.multidex.MultiDex;
+import com.common.lib.common.etoast2.EToastUtils;
+
 public class BaseApplication extends Application {
 	public static BaseApplication mInstance;
 	public static AppManager mAppManager;
 	@Override
 	protected void attachBaseContext(Context base) {
 		super.attachBaseContext(base);
+		MultiDex.install(this);
 	}
 
 	@Override
@@ -16,6 +20,7 @@ public class BaseApplication extends Application {
 		super.onCreate();
 		mInstance = this;
 		mAppManager = AppManager.getAppManager();
+		EToastUtils.init(this);
 	}
 
 

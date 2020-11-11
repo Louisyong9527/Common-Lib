@@ -5,11 +5,12 @@ import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * @time 2016/10/17
@@ -17,7 +18,9 @@ import android.view.WindowManager;
  */
 
 public class BaseActivity extends AppCompatActivity {
-    public Activity mActivity;
+
+    public AppCompatActivity mActivity;
+
     private ProgressDialog dialog;
 
     @Override

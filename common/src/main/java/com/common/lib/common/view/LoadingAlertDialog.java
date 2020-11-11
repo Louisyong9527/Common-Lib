@@ -3,9 +3,10 @@ package com.common.lib.common.view;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
 
 import com.common.lib.common.R;
 import com.common.lib.common.utils.StringUtils;
