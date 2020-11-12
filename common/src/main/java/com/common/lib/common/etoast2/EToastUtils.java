@@ -40,9 +40,12 @@ public class EToastUtils implements Application.ActivityLifecycleCallbacks {
             Toast.makeText(instance.mActivity,text, EToast2.LENGTH_SHORT).show();
     }
 
-    public static void showWithBg(CharSequence text){
-        if(instance != null&&instance.mActivity != null)
-            Toast.makeTextWithBg(instance.mActivity,text, EToast2.LENGTH_SHORT).show();
+    public static void showWithBg(Context context, Activity activity,String text){
+        if(instance != null&&instance.mActivity != null) {
+            Toast.makeTextWithBg(instance.mActivity, text, EToast2.LENGTH_SHORT).show();
+        }else if (activity!=null){
+            Toast.makeTextWithBg(activity, text, EToast2.LENGTH_SHORT).show();
+        }
     }
 
     public static void show(int resId){

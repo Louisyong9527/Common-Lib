@@ -746,7 +746,7 @@ public class AndroidUtils {
      */
     public static void showToast(Context context, Activity activity,String content) {
 
-        EToastUtils.showWithBg(content);
+        EToastUtils.showWithBg(context,activity,content);
     }
     public static ContactBen getContactPhone(Cursor cursor, Context context) {
         ContactBen vo = new ContactBen();
