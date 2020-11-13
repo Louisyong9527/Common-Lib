@@ -24,6 +24,11 @@ public class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        if (savedInstanceState != null) {
+            savedInstanceState.putParcelable("android:support:fragments", null);
+        }
+
         super.onCreate(savedInstanceState);
         mActivity = this;
         dealStatusColor();
